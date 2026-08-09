@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.tests/Zabil.Tests.csproj": {}
+    "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Tests/Zabil.Tests.csproj": {}
   },
   "projects": {
     "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/Zabil.Api.csproj": {
@@ -72,14 +72,14 @@
         }
       }
     },
-    "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.tests/Zabil.Tests.csproj": {
+    "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Tests/Zabil.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.tests/Zabil.Tests.csproj",
+        "projectUniqueName": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Tests/Zabil.Tests.csproj",
         "projectName": "Zabil.Tests",
-        "projectPath": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.tests/Zabil.Tests.csproj",
+        "projectPath": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Tests/Zabil.Tests.csproj",
         "packagesPath": "/Users/nabhanabedin/.nuget/packages/",
-        "outputPath": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.tests/obj/",
+        "outputPath": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nabhanabedin/.nuget/NuGet/NuGet.Config"

@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zabil.Api", "Zabil.Api\Zabil.Api.csproj", "{B44AE447-D8F6-4F73-9C42-80F5CD0FEB2B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Zabil.tests", "Zabil.tests", "{AEE10711-F1CA-6BB0-46F2-E52D6EE08A2D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Zabil.Tests", "Zabil.Tests", "{AEE10711-F1CA-6BB0-46F2-E52D6EE08A2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zabil.Tests", "Zabil.tests\Zabil.Tests.csproj", "{56F32CB4-1DB6-4EF7-89D1-6577C6AA37CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zabil.Tests", "Zabil.Tests\Zabil.Tests.csproj", "{56F32CB4-1DB6-4EF7-89D1-6577C6AA37CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
