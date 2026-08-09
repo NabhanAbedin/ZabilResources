@@ -13,6 +13,6 @@ public class HelloControllerTests
         var result = controller.Get();
 
         var okResult = Assert.IsType<OkObjectResult>(result);
-        Assert.Equal("Hello World", okResult.Value);
+        Assert.Equal("Hello World!", okResult.Value);
     }
 }
