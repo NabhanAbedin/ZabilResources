@@ -3,8 +3,13 @@ name: CI
 on:
   push:
     branches: [main, dev]
+    paths:
+      - 'backend/**'
   pull_request:
     branches: [main, dev]
+    paths:
+      - 'backend/**'
+  workflow_dispatch:
 
 jobs:
   test:
@@ -89,3 +94,16 @@ jobs:
           tags: |
             nabhanabedin/zabilresources-api-dev:${{ github.sha }}
             nabhanabedin/zabilresources-api-dev:latest
+
+  deploy-prod:
+    needs: build-and-push-prod
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Railway CLI
+        run: npm i -g @railway/cli
+
+      - name: Deploy to Railway
+        run: railway redeploy --service Zabil-Api
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
