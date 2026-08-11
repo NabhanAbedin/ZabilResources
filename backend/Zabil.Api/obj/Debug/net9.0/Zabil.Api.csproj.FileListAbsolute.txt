@@ -1,5 +1,4 @@
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/appsettings.Development.json
-/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/appsettings.json
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Zabil.Api.staticwebassets.endpoints.json
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Zabil.Api
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Zabil.Api.deps.json
@@ -128,3 +127,4 @@
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/appsettings.json
