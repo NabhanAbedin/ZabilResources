@@ -17,7 +17,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("google/exchange")]
-    public async Task<ActionResult<string>> ExchangeAndValidateAsync([FromQuery] string code)
+    public async Task<ActionResult<string>> ExchangeAndValidateAsync([FromBody] string code)
     {
         var exchangeResult = await _googleAuthService.ExchangeAndValidateAsync(code);
         if (!exchangeResult.Success) return BadRequest("Could not authenticate user");

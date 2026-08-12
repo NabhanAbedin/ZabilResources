@@ -34,7 +34,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:5174")
+        policy.WithOrigins("http://localhost:5173")
             .AllowCredentials()
             .AllowAnyMethod()
             .AllowAnyHeader();
@@ -46,7 +46,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ZabilContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("ZabilContext")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("LocalContext")));
 
 builder.Services.AddHttpClient("Google");
 builder.Services.AddScoped<IGoogleAuthService, GoogleAuthService>();
