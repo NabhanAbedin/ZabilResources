@@ -2851,11 +2851,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/Zabil.Api.csproj",
+      "projectUniqueName": "/Users/nabhanabedin/ZabilResources/backend/Zabil.Api/Zabil.Api.csproj",
       "projectName": "Zabil.Api",
-      "projectPath": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/Zabil.Api.csproj",
+      "projectPath": "/Users/nabhanabedin/ZabilResources/backend/Zabil.Api/Zabil.Api.csproj",
       "packagesPath": "/Users/nabhanabedin/.nuget/packages/",
-      "outputPath": "/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/obj/",
+      "outputPath": "/Users/nabhanabedin/ZabilResources/backend/Zabil.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/nabhanabedin/.nuget/NuGet/NuGet.Config"
