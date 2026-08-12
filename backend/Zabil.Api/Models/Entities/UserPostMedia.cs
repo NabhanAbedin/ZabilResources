@@ -4,8 +4,8 @@ namespace Zabil.Api.Models.Entities;
 
 public class UserPostMedia
 {
-    public int Id { get; set; }
-    public int PostId { get; set; }
+    public Guid Id { get; set; }
+    public Guid PostId { get; set; }
     public string S3Url { get; set; } = string.Empty;
     public UserPostMediaType MediaType { get; set; }
 

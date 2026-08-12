@@ -3,6 +3,11 @@ export interface NavLink {
   href: string;
 }
 
+export interface HeaderProps {
+  isLoggedIn: boolean;
+  onSignOut: () => void;
+}
+
 export interface AboutCategory {
   heading: string;
   intro: string;

@@ -4,8 +4,8 @@ namespace Zabil.Api.Models.Entities;
 
 public class FbMedia
 {
-    public int Id { get; set; }
-    public int PostId { get; set; }
+    public Guid Id { get; set; }
+    public Guid PostId { get; set; }
     public FbMediaType MediaType { get; set; }
     public string S3Url { get; set; } = string.Empty;
     public string? ThumbnailS3Url { get; set; }
