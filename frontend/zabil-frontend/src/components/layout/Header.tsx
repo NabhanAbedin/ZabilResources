@@ -1,4 +1,5 @@
-import type { NavLink } from "../../types/interfaces";
+import { Link } from "react-router-dom";
+import type { HeaderProps, NavLink } from "../../types/interfaces";
 
 const navLinks: NavLink[] = [
   { label: "About Us", href: "#about" },
@@ -7,7 +8,7 @@ const navLinks: NavLink[] = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Header = () => {
+const Header = ({ isLoggedIn, onSignOut }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
@@ -33,12 +34,30 @@ const Header = () => {
           ))}
         </nav>
 
-        <a
-          href="#contact"
-          className="rounded-full bg-gradient-to-r from-[#3bafac] to-[#30cab3] px-5 py-2.5 font-body text-sm font-semibold text-white shadow-sm shadow-brand-teal/30 transition-transform hover:scale-105"
-        >
-          Get In Touch
-        </a>
+        <div className="flex items-center gap-4">
+          {isLoggedIn ? (
+            <button
+              type="button"
+              onClick={onSignOut}
+              className="font-body text-sm font-medium text-brand-slate transition-colors hover:text-brand-teal"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="font-body text-sm font-medium text-brand-slate transition-colors hover:text-brand-teal"
+            >
+              Sign In
+            </Link>
+          )}
+          <a
+            href="#contact"
+            className="rounded-full bg-gradient-to-r from-[#3bafac] to-[#30cab3] px-5 py-2.5 font-body text-sm font-semibold text-white shadow-sm shadow-brand-teal/30 transition-transform hover:scale-105"
+          >
+            Get In Touch
+          </a>
+        </div>
       </div>
     </header>
   );

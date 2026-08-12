@@ -4,7 +4,7 @@ namespace Zabil.Api.Models.Entities;
 
 public class FbPost
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string FbPostId { get; set; } = string.Empty;
     public FbPostType PostType { get; set; }
     public string? Message { get; set; }

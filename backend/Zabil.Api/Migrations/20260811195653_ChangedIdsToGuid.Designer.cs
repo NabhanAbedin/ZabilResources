@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Zabil.Api.Data;
@@ -11,9 +12,11 @@ using Zabil.Api.Data;
 namespace Zabil.Api.Migrations
 {
     [DbContext(typeof(ZabilContext))]
-    partial class ZabilContextModelSnapshot : ModelSnapshot
+    [Migration("20260811195653_ChangedIdsToGuid")]
+    partial class ChangedIdsToGuid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
