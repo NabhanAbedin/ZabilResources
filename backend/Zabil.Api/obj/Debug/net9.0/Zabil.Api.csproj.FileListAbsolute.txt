@@ -128,3 +128,17 @@
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Google.Apis.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Google.Apis.Auth.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Google.Apis.Core.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/Newtonsoft.Json.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/System.Management.dll
+/Users/nabhanabedin/Desktop/ZabilResources/backend/Zabil.Api/bin/Debug/net9.0/runtimes/win/lib/net7.0/System.Management.dll

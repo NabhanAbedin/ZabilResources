@@ -4,7 +4,7 @@ namespace Zabil.Api.Models.Entities;
 
 public class FbSyncLog
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string? FbPostId { get; set; }
     public SyncTrigger Trigger { get; set; }
     public SyncStatus Status { get; set; }

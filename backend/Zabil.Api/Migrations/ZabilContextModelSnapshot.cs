@@ -24,11 +24,9 @@ namespace Zabil.Api.Migrations
 
             modelBuilder.Entity("Zabil.Api.Models.Entities.FbMedia", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<int?>("Height")
                         .HasColumnType("integer");
@@ -43,8 +41,8 @@ namespace Zabil.Api.Migrations
                     b.Property<int>("Position")
                         .HasColumnType("integer");
 
-                    b.Property<int>("PostId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("S3Url")
                         .IsRequired()
@@ -65,11 +63,9 @@ namespace Zabil.Api.Migrations
 
             modelBuilder.Entity("Zabil.Api.Models.Entities.FbPost", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("AdminTitle")
                         .HasColumnType("text");
@@ -131,11 +127,9 @@ namespace Zabil.Api.Migrations
 
             modelBuilder.Entity("Zabil.Api.Models.Entities.FbSyncLog", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CompletedAt")
                         .HasColumnType("timestamp with time zone");
@@ -166,11 +160,9 @@ namespace Zabil.Api.Migrations
 
             modelBuilder.Entity("Zabil.Api.Models.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("AvatarUrl")
                         .HasColumnType("text");
@@ -199,11 +191,9 @@ namespace Zabil.Api.Migrations
 
             modelBuilder.Entity("Zabil.Api.Models.Entities.UserIdentity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -219,8 +209,8 @@ namespace Zabil.Api.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -234,11 +224,9 @@ namespace Zabil.Api.Migrations
 
             modelBuilder.Entity("Zabil.Api.Models.Entities.UserPost", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -261,8 +249,8 @@ namespace Zabil.Api.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -273,18 +261,16 @@ namespace Zabil.Api.Migrations
 
             modelBuilder.Entity("Zabil.Api.Models.Entities.UserPostMedia", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("MediaType")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("PostId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("S3Url")
                         .IsRequired()
