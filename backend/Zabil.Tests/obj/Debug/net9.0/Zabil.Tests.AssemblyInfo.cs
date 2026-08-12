@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Zabil.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f305a649706db7d5e5f2225ef3b3599e38d68a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61b3bc0f3ac49319fafaf0a0b4ec7981c991fbf3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Zabil.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Zabil.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
