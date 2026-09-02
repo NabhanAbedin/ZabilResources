@@ -3,19 +3,21 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/home/Hero";
 import AboutSection from "../components/home/AboutSection";
-import { clearToken, getToken } from "../lib/authToken";
+import { clearToken, getIsAdmin, getToken } from "../lib/authToken";
 
 const HomePage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => Boolean(getToken()));
+  const [isAdmin, setIsAdmin] = useState(() => getIsAdmin());
 
   const onSignOut = () => {
     clearToken();
     setIsLoggedIn(false);
+    setIsAdmin(false);
   };
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header isLoggedIn={isLoggedIn} onSignOut={onSignOut} />
+      <Header isLoggedIn={isLoggedIn} isAdmin={isAdmin} onSignOut={onSignOut} />
       <main className="flex-1">
         <Hero />
         <AboutSection />

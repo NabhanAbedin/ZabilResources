@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Zabil.Api.Data;
+using Zabil.Api.Models.Options;
 using Zabil.Api.Services.Implementations;
 using Zabil.Api.Services.Interfaces;
 
@@ -26,7 +27,8 @@ builder.Services.AddAuthentication(options =>
             ValidAudience = builder.Configuration["Jwt:audience"],
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"])
-            )
+            ),
+            RoleClaimType = "Role"
         };
     });
 
@@ -49,8 +51,11 @@ builder.Services.AddDbContext<ZabilContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("LocalContext")));
 
 builder.Services.AddHttpClient("Google");
+builder.Services.Configure<AwsOptions>(builder.Configuration.GetSection("Aws"));
+
 builder.Services.AddScoped<IGoogleAuthService, GoogleAuthService>();
 builder.Services.AddScoped<IJWTService, JWTService>();
+builder.Services.AddScoped<IPostsService, PostsService>();
 
 var app = builder.Build();
 
@@ -81,4 +86,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// Makes the implicit top-level-statement Program class visible to
+// WebApplicationFactory<Program> in the test project.
+public partial class Program { }
 
