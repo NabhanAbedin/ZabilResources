@@ -8,7 +8,7 @@ const navLinks: NavLink[] = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Header = ({ isLoggedIn, onSignOut }: HeaderProps) => {
+const Header = ({ isLoggedIn, isAdmin, onSignOut }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
@@ -35,6 +35,14 @@ const Header = ({ isLoggedIn, onSignOut }: HeaderProps) => {
         </nav>
 
         <div className="flex items-center gap-4">
+          {isLoggedIn && isAdmin && (
+            <Link
+              to="/admin"
+              className="font-body text-sm font-medium text-brand-slate transition-colors hover:text-brand-teal"
+            >
+              Management Console
+            </Link>
+          )}
           {isLoggedIn ? (
             <button
               type="button"
