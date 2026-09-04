@@ -57,6 +57,8 @@ builder.Services.AddScoped<IGoogleAuthService, GoogleAuthService>();
 builder.Services.AddScoped<IJWTService, JWTService>();
 builder.Services.AddScoped<IPostsService, PostsService>();
 
+builder.Services.AddSingleton<IS3Service, S3Service>();
+
 var app = builder.Build();
 
 app.UseExceptionHandler(errorApp =>
