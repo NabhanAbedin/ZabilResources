@@ -1,19 +1,14 @@
-import { useState } from "react";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/home/Hero";
 import AboutSection from "../components/home/AboutSection";
-import { clearToken, getIsAdmin, getToken } from "../lib/authToken";
+import { endSession } from "../lib/authSession";
+import { useAuth } from "../lib/useAuth";
 
 const HomePage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => Boolean(getToken()));
-  const [isAdmin, setIsAdmin] = useState(() => getIsAdmin());
+  const { isLoggedIn, isAdmin } = useAuth();
 
-  const onSignOut = () => {
-    clearToken();
-    setIsLoggedIn(false);
-    setIsAdmin(false);
-  };
+  const onSignOut = () => endSession("signed-out");
 
   return (
     <div className="flex min-h-screen flex-col">

@@ -1,6 +1,8 @@
 import type { DecodedAuthClaims } from "../types/interfaces";
 
-const TOKEN_STORAGE_KEY = "zabil_jwt";
+export const TOKEN_STORAGE_KEY = "zabil_jwt";
+
+export const EXPIRY_SKEW_MS = 30_000;
 
 export const saveToken = (token: string): void => {
   localStorage.setItem(TOKEN_STORAGE_KEY, token);
@@ -39,6 +41,15 @@ export const decodeToken = (): DecodedAuthClaims | null => {
   }
 };
 
-export const getIsAdmin = (): boolean => {
-  return decodeToken()?.Role === "Admin";
+export const getExpiresAt = (): number | null => {
+  const exp = decodeToken()?.exp;
+  return typeof exp === "number" ? exp * 1000 : null;
 };
+
+export const isTokenExpired = (): boolean => {
+  const expiresAt = getExpiresAt();
+  if (expiresAt === null) return true;
+  return Date.now() >= expiresAt - EXPIRY_SKEW_MS;
+};
+
+export const hasValidToken = (): boolean => !isTokenExpired();

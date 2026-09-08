@@ -5,30 +5,34 @@ import OAuthCallbackPage from "./pages/OAuthCallbackPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import ManagementConsolePage from "./pages/ManagementConsolePage";
 import RequireAdmin from "./components/auth/RequireAdmin";
+import SessionWatcher from "./components/auth/SessionWatcher";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
-      <Route
-        path="/admin"
-        element={
-          <RequireAdmin>
-            <ManagementConsolePage />
-          </RequireAdmin>
-        }
-      />
-      <Route
-        path="/admin/posts/new"
-        element={
-          <RequireAdmin>
-            <CreatePostPage />
-          </RequireAdmin>
-        }
-      />
-    </Routes>
+    <>
+      <SessionWatcher />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
+        <Route
+          path="/admin"
+          element={
+            <RequireAdmin>
+              <ManagementConsolePage />
+            </RequireAdmin>
+          }
+        />
+        <Route
+          path="/admin/posts/new"
+          element={
+            <RequireAdmin>
+              <CreatePostPage />
+            </RequireAdmin>
+          }
+        />
+      </Routes>
+    </>
   );
 }
 
