@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { exchangeGoogleCode } from "../api/authApi";
 import { consumeStoredState } from "../lib/googleAuth";
-import { saveToken } from "../lib/authToken";
+import { signIn } from "../lib/authSession";
 
 const OAuthCallbackPage = () => {
   const [searchParams] = useSearchParams();
@@ -37,7 +37,7 @@ const OAuthCallbackPage = () => {
       return exchangeGoogleCode(code);
     },
     onSuccess: (jwt) => {
-      saveToken(jwt);
+      signIn(jwt);
       navigate("/", { replace: true });
     },
   });

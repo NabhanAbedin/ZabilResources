@@ -1,13 +1,15 @@
 import { Navigate } from "react-router-dom";
-import { getIsAdmin, getToken } from "../../lib/authToken";
+import { useAuth } from "../../lib/useAuth";
 import type { RequireAdminProps } from "../../types/interfaces";
 
 const RequireAdmin = ({ children }: RequireAdminProps) => {
-  if (!getToken()) {
+  const { isLoggedIn, isAdmin } = useAuth();
+
+  if (!isLoggedIn) {
     return <Navigate to="/login" replace />;
   }
 
-  if (!getIsAdmin()) {
+  if (!isAdmin) {
     return <Navigate to="/" replace />;
   }
 

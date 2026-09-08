@@ -28,6 +28,15 @@ export interface RequireAdminProps {
   children: ReactNode;
 }
 
+export type SessionEndedReason = "expired" | "unauthorized" | "signed-out";
+
+export interface AuthSnapshot {
+  isLoggedIn: boolean;
+  isAdmin: boolean;
+  email: string | null;
+  endedReason: SessionEndedReason | null;
+}
+
 export type PostCategory =
   | "ContentFeed"
   | "SuccessStory"
