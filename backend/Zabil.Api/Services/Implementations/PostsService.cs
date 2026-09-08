@@ -1,16 +1,8 @@
-using Amazon;
-using Amazon.Runtime;
-using Amazon.S3;
-using Amazon.S3.Transfer;
-using Amazon.SecurityToken;
-using Amazon.SecurityToken.Model;
-using Microsoft.Extensions.Options;
 using Zabil.Api.Common;
 using Zabil.Api.Data;
 using Zabil.Api.Models.DTOs;
 using Zabil.Api.Models.Entities;
 using Zabil.Api.Models.Enums;
-using Zabil.Api.Models.Options;
 using Zabil.Api.Services.Interfaces;
 
 namespace Zabil.Api.Services.Implementations;
@@ -18,14 +10,14 @@ namespace Zabil.Api.Services.Implementations;
 public class PostsService : IPostsService
 {
     private readonly ZabilContext _context;
-    private readonly AwsOptions _options;
     private readonly ILogger<PostsService> _logger;
+    private readonly IS3Service _s3Service;
 
-    public PostsService(ZabilContext context, IOptions<AwsOptions> options, ILogger<PostsService> logger)
+    public PostsService(ZabilContext context, ILogger<PostsService> logger, IS3Service s3Service)
     {
         _context = context;
-        _options = options.Value;
         _logger = logger;
+        _s3Service = s3Service;
     }
 
     public async Task<Result<bool>> CreatePostAsync(CreatePostFormDto formDto, Guid userId)
@@ -46,43 +38,16 @@ public class PostsService : IPostsService
         
         if (formDto.MediaFiles.Count != 0)
         {
-            using var stsClient = new AmazonSecurityTokenServiceClient(
-                _options.AccessKeyId,
-                _options.SecretAccessKey,
-                RegionEndpoint.GetBySystemName(_options.Region));
-
-            var assumeRoleResponse = await stsClient.AssumeRoleAsync(new AssumeRoleRequest
-            {
-                RoleArn = _options.S3RoleArn,
-                RoleSessionName = "railway-backend-user"
-            });
-
-            var temp = assumeRoleResponse.Credentials;
-
-            var sessionCredentials = new SessionAWSCredentials(
-                temp.AccessKeyId,
-                temp.SecretAccessKey,
-                temp.SessionToken
-            );
-
-            using var s3Client =
-                new AmazonS3Client(sessionCredentials, RegionEndpoint.GetBySystemName(_options.Region));
-            var transferutility = new TransferUtility(s3Client);
+            
             
             try
             {
                 foreach (var file in formDto.MediaFiles)
                 {
                     var key = $"user-posts/{postId}/{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                    await using var stream = file.OpenReadStream();
+                    await using var streamContent = file.OpenReadStream();
 
-                    await transferutility.UploadAsync(new TransferUtilityUploadRequest
-                    {
-                        InputStream = stream,
-                        BucketName = _options.BucketName,
-                        Key = key,
-                        ContentType = file.ContentType
-                    });
+                    await _s3Service.UploadAsync(key, streamContent, file.ContentType);
                 
                     uploadedKeys.Add(key);
                 
@@ -95,12 +60,12 @@ public class PostsService : IPostsService
             }
             catch (NotSupportedException e)
             {
-                await RollBackUploadsAsync(s3Client, uploadedKeys);
+                await RollBackUploadsAsync(uploadedKeys);
                 return Result<bool>.Fail(e.Message);
             }
             catch (Exception)
             {
-                await RollBackUploadsAsync(s3Client, uploadedKeys);
+                await RollBackUploadsAsync(uploadedKeys);
                 throw;
             }
         }
@@ -118,25 +83,8 @@ public class PostsService : IPostsService
             {
                 try
                 {
-                    using var stsClient = new AmazonSecurityTokenServiceClient(
-                        _options.AccessKeyId,
-                        _options.SecretAccessKey,
-                        RegionEndpoint.GetBySystemName(_options.Region));
-
-                    var assumeRoleResponse = await stsClient.AssumeRoleAsync(new AssumeRoleRequest
-                    {
-                        RoleArn = _options.S3RoleArn,
-                        RoleSessionName = "railway-backend-user"
-                    });
-
-                    var temp = assumeRoleResponse.Credentials;
-                    var sessionCredentials = new SessionAWSCredentials(
-                        temp.AccessKeyId, temp.SecretAccessKey, temp.SessionToken);
-
-                    using var s3Client =
-                        new AmazonS3Client(sessionCredentials, RegionEndpoint.GetBySystemName(_options.Region));
-
-                    await RollBackUploadsAsync(s3Client, uploadedKeys);
+                    
+                    await RollBackUploadsAsync(uploadedKeys);
                 }
                 catch (Exception rollbackEx)
                 {
@@ -151,13 +99,13 @@ public class PostsService : IPostsService
         }
     }
 
-    private async Task RollBackUploadsAsync(AmazonS3Client s3Client, List<string> keys)
+    private async Task RollBackUploadsAsync(List<string> keys)
     {
         foreach (var key in keys)
         {
             try
             {
-                await s3Client.DeleteObjectAsync(_options.BucketName, key);
+                await _s3Service.DeleteAsync(key);
             }
             catch (Exception e)
             {
